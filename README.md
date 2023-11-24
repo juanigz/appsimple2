@@ -60,3 +60,12 @@ especificaron en clase para el 3 y 4 (uso de stream, interfaz y lambda) que podr
 3- consultas y busquedas: filtrar libros por titulo, autor o genero. (streams de la coleccion, o botones de busqueda particular?).
 
 4- informes o estadísticas.... por ahora y lo dicho en clase, los descarto.
+
+--------
+uso devuelta el MVC.
+
+enum 1 - bibliotecario.
+enum 2 - cliente.
+pantallas diferentes para cada uno ?
+
+o a que se refiere con "usuarios"? todos un mismo usuario?.
