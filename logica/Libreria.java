@@ -24,5 +24,69 @@ public class Libreria
         return _listaUsuarios;
     }
 
+    public static Libro generarLibro(String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        return libro;
+    }
     
+    public static List<Libro> agregarLibro(Libro libro)
+    {
+        // if (!yaIngresado(libro, _libros))
+        if (!_libros.contains(libro))
+        {
+            _libros.add(libro);
+            System.out.println("libro " + libro.toString() + " agregado! ");
+        }
+        else System.out.println("libro ya existente en registro.");
+        return _libros;
+    }
+
+    public static List<Libro> eliminarLibro(Libro libro)
+    {
+        // if (yaIngresado(libro, _libros))
+        if (_libros.contains(libro))
+        {
+            _libros.remove(libro);
+            System.out.println("libro " + libro.toString() + " ELIMINADO! ");
+        }
+        else System.out.println("libro no existente.");
+        return _libros;
+    }
+
+    // NO controla si se encontraba o no disponible.
+    public static Libro alquilarLibro (String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        if (!_libros.contains(libro))
+        {
+            throw new RuntimeException("libro no encontrado en listado.");
+        }
+        return libro;
+    }
+
+    // NO controla si se encontraba o no disponible.
+    public static Libro devolverLibro (String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        if (!_libros.contains(libro))
+        {
+            throw new RuntimeException("libro no encontrado en listado.");
+        }
+        return libro;
+    }
+
+    // public static Libro buscarLibro(String titulo, String autor, String genero)
+    // {
+    // }
+
+    // private static boolean yaIngresado(Libro libro, List<Libro> libros) 
+    // {
+    //     for (Libro l : libros) {
+	//     	if (l.getTitulo() == libro.getTitulo() && l.getAutor() == libro.getAutor() && l.getGenero() == libro.getGenero()){
+	//     		return true;
+	//     	}
+	//     }
+	//     return false;
+    // }
 }
