@@ -18,6 +18,7 @@ public class VentanaClienteControlador
         VentanaCliente.setVisible(false);
     }
 
+    // debe devolver excepcion de libro inexistente.
     public static Libro alquilarLibro(String titulo, String autor, String genero)
     {
         return Libreria.alquilarLibro(titulo, autor, genero);

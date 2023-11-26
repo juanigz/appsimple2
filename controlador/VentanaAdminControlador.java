@@ -20,13 +20,18 @@ public class VentanaAdminControlador
         ventanaAdmin.setVisible(false);
     }
 
-    public static List<Libro> agregarLibro(String titulo, String autor, String genero)
+    public static Libro generarLibro(String titulo, String autor, String genero)
     {
-        return Libreria.agregarLibro(titulo, autor, genero);
+        return Libreria.generarLibro(titulo, autor, genero);
     }
 
-    public static List<Libro> eliminarLibro(String titulo, String autor, String genero)
+    public static List<Libro> agregarLibro(Libro libro)
     {
-        return Libreria.eliminarLibro(titulo, autor, genero);
+        return Libreria.agregarLibro(libro);
+    }
+
+    public static List<Libro> eliminarLibro(Libro libro)
+    {
+        return Libreria.eliminarLibro(libro);
     }
 }

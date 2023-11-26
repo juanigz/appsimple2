@@ -24,21 +24,33 @@ public class Libreria
         return _listaUsuarios;
     }
 
-    // Tampoco controla si se encontraba o no disponible.
-    public static List<Libro> agregarLibro(String titulo, String autor, String genero)
+    public static Libro generarLibro(String titulo, String autor, String genero)
     {
         Libro libro = new Libro(titulo, autor, genero);
-        System.out.println("libro " + libro.toString() + " agregado! ");
-        _libros.add(libro);
+        return libro;
+    }
+    
+    public static List<Libro> agregarLibro(Libro libro)
+    {
+        // if (!yaIngresado(libro, _libros))
+        if (!_libros.contains(libro))
+        {
+            _libros.add(libro);
+            System.out.println("libro " + libro.toString() + " agregado! ");
+        }
+        else System.out.println("libro ya existente en registro.");
         return _libros;
     }
 
-    // NO controla si se encontraba o no disponible.
-    public static List<Libro> eliminarLibro(String titulo, String autor, String genero)
+    public static List<Libro> eliminarLibro(Libro libro)
     {
-        Libro libro = new Libro(titulo, autor, genero);
-        System.out.println("libro " + libro.toString() + " ELIMINADO! ");
-        _libros.remove(libro);
+        // if (yaIngresado(libro, _libros))
+        if (_libros.contains(libro))
+        {
+            _libros.remove(libro);
+            System.out.println("libro " + libro.toString() + " ELIMINADO! ");
+        }
+        else System.out.println("libro no existente.");
         return _libros;
     }
 
@@ -63,4 +75,18 @@ public class Libreria
         }
         return libro;
     }
+
+    // public static Libro buscarLibro(String titulo, String autor, String genero)
+    // {
+    // }
+
+    // private static boolean yaIngresado(Libro libro, List<Libro> libros) 
+    // {
+    //     for (Libro l : libros) {
+	//     	if (l.getTitulo() == libro.getTitulo() && l.getAutor() == libro.getAutor() && l.getGenero() == libro.getGenero()){
+	//     		return true;
+	//     	}
+	//     }
+	//     return false;
+    // }
 }
