@@ -49,7 +49,9 @@ Creatividad: ¿Los estudiantes implementan funcionalidades adicionales o mejoras
 
 -----------------------------
 requisitos funcionales 1 y 2 escenciales.
-3 y 4 importantes/deseables.
+3 importante.
+4 deseable.
+
 especificaron en clase para el 3 y 4 (uso de stream, interfaz y lambda) que podriamos NO usarlos.
 
 1- gestión de libros: una biblioteca donde los usuarios puedan agregar o quitar libros. (el usuario podria ser bibliotecario?).
@@ -64,8 +66,11 @@ especificaron en clase para el 3 y 4 (uso de stream, interfaz y lambda) que podr
 --------
 uso devuelta el MVC.
 
-enum 1 - bibliotecario.
-enum 2 - cliente.
-pantallas diferentes para cada uno ?
+registro de usuario indistinto, pantallas diferentes para cada uno segun el boton que toque.
+la aplicación cuenta con 3 pantallas simples distintas.
 
-o a que se refiere con "usuarios"? todos un mismo usuario?.
+una principal, para registrar al usuario. solo clientes se "registran" en el sistema.
+si es admin, pantalla para agregar y eliminar libros.
+si es cliente, pantalla para alquilar y devolver libros.
+(todo se muestra por consola).
+

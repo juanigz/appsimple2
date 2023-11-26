@@ -3,15 +3,17 @@ package interfaz;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-//import java.awt.List;
 import java.awt.event.ActionListener;
+
+import java.util.List;
 
 import javax.swing.*;
 
-import controlador.VentanaUsuarioControlador;
-import logica.TipoUsuario;
+import controlador.VentanaAdminControlador;
+import controlador.VentanaClienteControlador;
+import controlador.VentanaPrincipalControlador;
 
-//import logica.Usuario;
+import logica.Cliente;
 
 // ventana donde vemos si el usuario es administrador, o cliente ???
 // las busquedas de libros son las mismas para ambos usuarios. se buscan por titulo, autor o género.
@@ -27,7 +29,8 @@ public class VentanaPrincipal extends JFrame
     private JButton botonIngresarAdmin;
     private JButton botonIngresarCliente;
 
-    // private List<Usuario> usuarios;
+    // Se usaba para ver por consola todos los registrados.
+    private List<Cliente> usuarios;
 
     public VentanaPrincipal() 
     {
@@ -37,36 +40,40 @@ public class VentanaPrincipal extends JFrame
     public void inicializar() 
     {
         // Configura la ventana principal.
-        getContentPane().setBackground(new Color(163, 200, 211));
-        setBounds(100, 100, 550, 490);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // getContentPane().setBackground(new Color(163, 200, 211));
+        this.setBackground(new Color(163, 200, 211));
+        this.setBounds(100, 100, 550, 490);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // getContentPane().setLayout(null);
 
-        setTitle("Aplicación de biblioteca");
-        setLocationRelativeTo(null); // Centra la ventana en pantalla
-        setResizable(false);
+        this.setTitle("Aplicación de biblioteca");
+        this.setLocationRelativeTo(null); // Centra la ventana en pantalla
+        this.setResizable(false);
 
         labelTitulo = new JLabel("Acceso de usuarios");
-        labelTitulo.setForeground(new Color(255, 255, 255));
+        labelTitulo.setForeground(new Color(250, 200, 100));
         labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         labelTitulo.setFont(new Font("Tahoma", Font.BOLD, 30));
-        labelTitulo.setBounds(0, 11, 532, 29);
-        // getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(10, 150, 532, 29);
+        this.getContentPane().add(labelTitulo);
 
         // Define los componentes.
         labelNombre = new JLabel("Nombre:");
         campoNombre = new JTextField();
+        campoNombre.setColumns(10);
 
         labelContraseña = new JLabel("Contraseña:");
         campoContraseña = new JTextField();
+        campoContraseña.setColumns(10);
 
         botonIngresarAdmin = new JButton("Ingresar Admin");
+        botonIngresarAdmin.setBounds(20, 400, 30, 30);
         botonIngresarCliente = new JButton("Ingresar Cliente");
 
         // Agrega todos los componentes a un JPanel particular.
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        //panel.add(labelTitulo);
         panel.add(labelNombre);
         panel.add(campoNombre);
         panel.add(labelContraseña);
@@ -78,16 +85,35 @@ public class VentanaPrincipal extends JFrame
 
         botonIngresarAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaUsuarioControlador.setTipoUsuario(TipoUsuario.ADMIN);
+				VentanaAdminControlador.mostrar();
 				dispose();
 			}
 		});
 
-        botonIngresarCliente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				VentanaUsuarioControlador.setTipoUsuario(TipoUsuario.CLIENTE);
-				dispose();
-			}
-		});
+         botonIngresarCliente.addActionListener(e -> 
+         {
+            String nombre = campoNombre.getText();
+            String contraseña = campoContraseña.getText();
+
+            if (!nombre.isBlank() || !contraseña.isBlank()) 
+            {
+                Cliente user = VentanaPrincipalControlador.generarUsuario(nombre, contraseña);
+                usuarios = VentanaPrincipalControlador.registrarClientes(user);
+                limpiarCampos();
+                JOptionPane.showMessageDialog(this, "Persona registrada!");
+                VentanaClienteControlador.mostrar();
+                dispose();	
+            }
+            else 
+            {					
+                JOptionPane.showMessageDialog(null, "El apellido o el nombre no pueden estar vacíos.");
+            }
+         });
     }
+
+    private void limpiarCampos() 
+    {
+	    campoNombre.setText("");
+		campoContraseña.setText("");
+	}
 }

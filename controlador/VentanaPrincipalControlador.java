@@ -1,7 +1,10 @@
 package controlador;
 
+import java.util.List;
+
 import interfaz.VentanaPrincipal;
-import logica.TipoUsuario;
+import logica.Cliente;
+import logica.Libreria;
 
 public class VentanaPrincipalControlador 
 {
@@ -17,10 +20,13 @@ public class VentanaPrincipalControlador
         ventanaPrincipal.setVisible(false);
     }
 
-    // segun el tipo de usuario que se elija, abrira un tipo de ventana u otra.
-    public static void setTipoUsuario(TipoUsuario user)
+    public static Cliente generarUsuario(String nombre, String contraseña)
     {
-        cerrar();
-        VentanaUsuarioControlador.setTipoUsuario(user);
+        return Libreria.generarUsuario(nombre, contraseña);
+    }
+
+    public static List<Cliente> registrarClientes(Cliente usuario)
+    {
+        return Libreria.registrarUsuario(usuario);
     }
 }
