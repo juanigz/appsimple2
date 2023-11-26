@@ -18,3 +18,20 @@ faltaria la gestion de libros de parte de la libreria, los controladores para ac
 y por ultimo, recorrer la lista de libros con los filtros que nos permiten los stream.
 
 todo en muestra por consola.
+
+----
+acomodé los atributos de libro.. el orden es: titulo, autor, genero.
+
+hice los botones y sus acciones, lo ultimo que quedaría sería acomodar las estructuras de datos.
+y lograr filtrarlas con los stream por consola. esto con la "busqueda de libros" implementada en admin y cliente.
+
+... entonces, será que lo unico que importaba era registrar el libro y hacerlo encontrar en el stream?
+
+// la aplicación en sí muchos controles y detalle no tiene.. solo cumple con lo más técnico.
+
+// está el detalle para los clientes, de alquilar o devolver libros. los libros deberian estar en el listado de libros de la biblioteca (probar con libros ya cargados predefinidamente, o crearlos y visualizar el registro.)
+
+//toca revisar la "permanencia" de los datos.
+
+// tambien.. como buscar por autor, titulo y genero..
+

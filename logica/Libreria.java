@@ -24,5 +24,43 @@ public class Libreria
         return _listaUsuarios;
     }
 
-    
+    // Tampoco controla si se encontraba o no disponible.
+    public static List<Libro> agregarLibro(String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        System.out.println("libro " + libro.toString() + " agregado! ");
+        _libros.add(libro);
+        return _libros;
+    }
+
+    // NO controla si se encontraba o no disponible.
+    public static List<Libro> eliminarLibro(String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        System.out.println("libro " + libro.toString() + " ELIMINADO! ");
+        _libros.remove(libro);
+        return _libros;
+    }
+
+    // NO controla si se encontraba o no disponible.
+    public static Libro alquilarLibro (String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        if (!_libros.contains(libro))
+        {
+            throw new RuntimeException("libro no encontrado en listado.");
+        }
+        return libro;
+    }
+
+    // NO controla si se encontraba o no disponible.
+    public static Libro devolverLibro (String titulo, String autor, String genero)
+    {
+        Libro libro = new Libro(titulo, autor, genero);
+        if (!_libros.contains(libro))
+        {
+            throw new RuntimeException("libro no encontrado en listado.");
+        }
+        return libro;
+    }
 }
