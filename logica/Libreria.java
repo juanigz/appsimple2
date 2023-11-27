@@ -2,6 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 // Gestiona los libros y usuarios/clientes (para mostrar por consola la busqueda particular de cada uno).
 public class Libreria
@@ -70,16 +71,44 @@ public class Libreria
     }
 
     // NO controla si se encontraba o no disponible.
-    public static Libro devolverLibro (String titulo, String autor, String genero)
+    public static List<Libro> devolverLibro (Libro libro)
     {
-        Libro libro = new Libro(titulo, autor, genero);
-        if (!_libros.contains(libro))
+        // si el cliente no lo tiene, tira excepcion.
+        if (!_librosUsuario.contains(libro))
         {
             throw new RuntimeException("libro no encontrado en listado.");
         }
-        return libro;
+
+        // chequea que la biblioteca no lo tenga, y que el cliente si.
+        else {
+            // lo elimina del inventario de usuario, y lo devuelve a libros de biblioteca.
+            //generarLibro(libro.getTitulo(), libro.getAutor(), libro.getGenero());
+            agregarLibro(libro);
+            _librosUsuario.remove(libro);
+        }
+        return _librosUsuario;
+
+        // Optional<Libro> usuarioExistente = this.libros.stream().filter(Libro l -> libro.nombre.equals(nombre)).findFirst()
     }
 
+    // busqueda de inventario usuario.
+    public static Libro buscarLibroUsuario(String titulo, String autor, String genero)
+    {
+        // tomo un solo buscador, ya que asumo que si el libro existe, todo lo demás también.
+        for(Libro l: _librosUsuario)
+        {
+            if (l.getTitulo().equals(titulo))
+            {
+                System.out.println("libro encontrado!. " + l.toString() + " / por titulo: " + l.getTitulo());
+                return l;
+            }
+        }
+
+        System.out.println("libro no existente.");
+        return null;
+    }
+
+    // busqueda de libreria.
     public static Libro buscarLibro(String titulo, String autor, String genero)
     {
         // tomo un solo buscador, ya que asumo que si el libro existe, todo lo demás también.

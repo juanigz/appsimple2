@@ -25,14 +25,19 @@ public class VentanaClienteControlador
         return Libreria.buscarLibro(titulo, autor, genero);
     }
 
+    public static Libro buscarLibroUsuario(String titulo, String autor, String genero)
+    {
+        return Libreria.buscarLibroUsuario(titulo, autor, genero);
+    }
+
     // debe devolver excepcion de libro inexistente.
     public static List<Libro> alquilarLibro(Libro libro)
     {
         return Libreria.alquilarLibro(libro);
     }
 
-    // public static List<Libro> devolverLibro(Libro libro)
-    // {
-    //     return Libreria.devolverLibro(libro);
-    // }
+    public static List<Libro> devolverLibro(Libro libro)
+    {
+        return Libreria.devolverLibro(libro);
+    }
 }

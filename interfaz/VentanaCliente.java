@@ -114,6 +114,7 @@ public class VentanaCliente extends JFrame {
             String genero = campoGenero.getText();
 
             try {
+                // if (!titulo.isBlank() || !autor.isBlank() || !genero.isBlank()) {
                 if (!titulo.isBlank() && !autor.isBlank() && !genero.isBlank()) {
                     Libro libro = VentanaClienteControlador.buscarLibro(titulo, autor, genero);
                     if (libro == null) {
@@ -133,24 +134,33 @@ public class VentanaCliente extends JFrame {
             }
         });
 
-        // botonDevolverLibro.addActionListener(e ->
-        // {
-        // String titulo = campoTitulo.getText();
-        // String autor = campoAutor.getText();
-        // String genero = campoGenero.getText();
+        botonDevolverLibro.addActionListener(event ->
+        {
+            String titulo = campoTitulo.getText();
+            String autor = campoAutor.getText();
+            String genero = campoGenero.getText();
 
-        // if (!titulo.isBlank() && !autor.isBlank() && !genero.isBlank())
-        // {
-        // VentanaClienteControlador.devolverLibro(titulo, autor, genero);
-        // limpiarCampos();
-        // JOptionPane.showMessageDialog(this, "Libro devuelto...!");
-        // }
-        // else
-        // {
-        // JOptionPane.showMessageDialog(null, "El título, autor o género no pueden
-        // estar vacíos.");
-        // }
-        // });
+            try {
+                if (!titulo.isBlank() && !autor.isBlank() && !genero.isBlank()) {
+                    Libro libro = VentanaClienteControlador.buscarLibroUsuario(titulo, autor, genero);
+                    if (libro == null) {
+                        throw new NullPointerException("libro NO ENCONTRADO NULL.");
+                    }
+
+                    // no se logra detectar correctamente la devolucion del libro del usuario, todo lo demas OK.
+                    _librosDeCliente = VentanaClienteControlador.devolverLibro(libro);
+                    limpiarCampos();
+                    JOptionPane.showMessageDialog(this,
+                            "Libro " + libro.toString() + ", devuelto por el cliente: " + VentanaPrincipal.getCliente().toString());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "El título, autor o género no pueden estar vacíos.");
+                }
+            } 
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+        });
 
         botonVerAlquilados.addActionListener(event -> {
             JOptionPane.showMessageDialog(this, "Abriendo registro de alquilados!");
