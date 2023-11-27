@@ -14,6 +14,8 @@ import controlador.VentanaClienteControlador;
 import controlador.VentanaPrincipalControlador;
 
 import logica.Cliente;
+import logica.Libreria;
+import logica.Libro;
 
 // ventana donde vemos si el usuario es administrador, o cliente ???
 // las busquedas de libros son las mismas para ambos usuarios. se buscan por titulo, autor o género.
@@ -31,6 +33,9 @@ public class VentanaPrincipal extends JFrame
 
     // Se usaba para ver por consola todos los registrados.
     private List<Cliente> usuarios;
+    private static List<Libro> libros = Libreria._libros;
+
+    private static Cliente user;
 
     public VentanaPrincipal() 
     {
@@ -97,10 +102,11 @@ public class VentanaPrincipal extends JFrame
 
             if (!nombre.isBlank() || !contraseña.isBlank()) 
             {
-                Cliente user = VentanaPrincipalControlador.generarUsuario(nombre, contraseña);
+                user = VentanaPrincipalControlador.generarUsuario(nombre, contraseña);
                 usuarios = VentanaPrincipalControlador.registrarClientes(user);
-                limpiarCampos();
+                // limpiarCampos();
                 JOptionPane.showMessageDialog(this, "Persona registrada!");
+                
                 VentanaClienteControlador.mostrar();
                 dispose();	
             }
@@ -111,9 +117,14 @@ public class VentanaPrincipal extends JFrame
          });
     }
 
-    private void limpiarCampos() 
+    public static Cliente getCliente()
     {
-	    campoNombre.setText("");
-		campoContraseña.setText("");
-	}
+        return user;
+    }
+
+    // private void limpiarCampos() 
+    // {
+	//     campoNombre.setText("");
+	// 	campoContraseña.setText("");
+	// }
 }

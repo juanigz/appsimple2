@@ -24,4 +24,10 @@ public abstract class Usuario
     {
         return _contraseña;
     }
+
+    @Override
+    public String toString()
+    {
+        return "usuario: " + _nombre;
+    }
 }
