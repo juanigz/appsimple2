@@ -29,4 +29,5 @@ public class VentanaPrincipalControlador
     {
         return Libreria.registrarUsuario(usuario);
     }
+    
 }

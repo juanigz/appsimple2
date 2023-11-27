@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.List;
+
 import interfaz.VentanaCliente;
 import logica.Libreria;
 import logica.Libro;
@@ -18,14 +20,24 @@ public class VentanaClienteControlador
         VentanaCliente.setVisible(false);
     }
 
-    // debe devolver excepcion de libro inexistente.
-    public static Libro alquilarLibro(String titulo, String autor, String genero)
+    public static Libro buscarLibro(String titulo, String autor, String genero)
     {
-        return Libreria.alquilarLibro(titulo, autor, genero);
+        return Libreria.buscarLibro(titulo, autor, genero);
     }
 
-    public static Libro devolverLibro(String titulo, String autor, String genero)
+    public static Libro buscarLibroUsuario(String titulo, String autor, String genero)
     {
-        return Libreria.devolverLibro(titulo, autor, genero);
+        return Libreria.buscarLibroUsuario(titulo, autor, genero);
+    }
+
+    // debe devolver excepcion de libro inexistente.
+    public static List<Libro> alquilarLibro(Libro libro)
+    {
+        return Libreria.alquilarLibro(libro);
+    }
+
+    public static List<Libro> devolverLibro(Libro libro)
+    {
+        return Libreria.devolverLibro(libro);
     }
 }

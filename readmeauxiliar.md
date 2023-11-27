@@ -35,3 +35,11 @@ y lograr filtrarlas con los stream por consola. esto con la "busqueda de libros"
 
 // tambien.. como buscar por autor, titulo y genero..
 
+/////////////////////
+
+// try/catch para que se cambie el cartel de agregar repetidos en ventanaAdmin. (solo un optionPane)
+
+// boton y accion de devolverLibro. (se elimina de la lista de libros alquilados, se agrega nuevamente a libros de biblioteca..)
+
+// intentar implementar streams para las busquedas (sencillo en teoria, el comportamiento es el mismo...)
+//va a ser mejor, por temas de tiempo, hacer todo directamente en el buscarLibro general, con un stream..

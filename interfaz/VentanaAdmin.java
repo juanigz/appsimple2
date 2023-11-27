@@ -2,7 +2,6 @@ package interfaz;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -14,8 +13,8 @@ import javax.swing.SwingConstants;
 
 import controlador.VentanaAdminControlador;
 import controlador.VentanaPrincipalControlador;
-import logica.Libro;
 import logica.Libreria;
+import logica.Libro;
 
 // el admin puede agregar o eliminar libros.
 public class VentanaAdmin extends JFrame {
@@ -35,7 +34,7 @@ public class VentanaAdmin extends JFrame {
 
     private JButton botonVerRegistro;
 
-    private List<Libro> _libros;
+    private List<Libro> _libros = Libreria._libros;
 
     // Gestión de libros.
     public VentanaAdmin() {
@@ -147,9 +146,10 @@ public class VentanaAdmin extends JFrame {
 
             try {
                 if (_libros == null || _libros.size() == 0) {
-                    throw new NullPointerException("libreria vacia.");
+                    throw new NullPointerException("Librería vacia.");
                 }
 
+                System.out.println("registro de libros: ");
                 for (Libro libro : _libros) {
                     System.out.println(libro.toString());
                     // impresión directamente por consola usando toString desde logica.persona, no
