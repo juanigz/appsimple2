@@ -1,32 +1,33 @@
 package logica;
 
-import controlador.BusquedaLibros;
+// esta clase deberá ser abstracta, para que admin y cliente extiendan de ella.
 
-public class Cliente extends Usuario implements BusquedaLibros
+// mismos parametros, pero cambian las acciones. el rol se definirá segun como ingrese en la 
+// pantalla principal al registrarse. -> el posible enum. 1- admin, 2- cliente.
+public class Cliente
 {
+    private String _nombre;
+    private String _contraseña;
 
     public Cliente(String nombre, String contraseña)
     {
-        super(nombre, contraseña);
+        _nombre = nombre;
+        _contraseña = contraseña;
+    }
+
+    public String getNombre()
+    {
+        return _nombre;
+    }
+
+    public String getContraseña()
+    {
+        return _contraseña;
     }
 
     @Override
-    public void buscarPorTitulo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorTitulo'");
+    public String toString()
+    {
+        return "usuario: " + _nombre;
     }
-
-    @Override
-    public void buscarPorAutor() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorAutor'");
-    }
-
-    @Override
-    public void buscarPorGenero() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorGenero'");
-    }
-        
-    
 }

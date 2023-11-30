@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-// Gestiona los libros y usuarios/clientes (para mostrar por consola la busqueda particular de cada uno).
+// Gestiona los libros de biblioteca e inventario del usuario.
 public class Libreria
 {
     public static List<Libro> _libros = new ArrayList<>();
@@ -91,7 +91,7 @@ public class Libreria
         // Optional<Libro> usuarioExistente = this.libros.stream().filter(Libro l -> libro.nombre.equals(nombre)).findFirst()
     }
 
-    // busqueda de inventario usuario.
+    // busqueda dentro del inventario de usuario.
     public static Libro buscarLibroUsuario(String titulo, String autor, String genero)
     {
         // tomo un solo buscador, ya que asumo que si el libro existe, todo lo demás también.
@@ -108,59 +108,64 @@ public class Libreria
         return null;
     }
 
-    // busqueda de libreria.
+    // busqueda en libreria.
     public static Libro buscarLibro(String titulo, String autor, String genero)
     {
         // tomo un solo buscador, ya que asumo que si el libro existe, todo lo demás también.
-        Libro libro = buscarPorTitulo(titulo);
+        // Libro libro = buscarPorTitulo(titulo);
+        Optional<Libro> librosBuscados = _libros.stream().filter(l -> l.getTitulo().equals(titulo)).findFirst();
+
+        Libro libro = librosBuscados.get();
+
+        System.out.println("libro encontrado!. " + libro.toString() + " / por titulo: " + libro.getTitulo());
 
         return libro;
     }
 
-    public static Libro buscarPorTitulo(String titulo)
-    {
-        for(Libro l: _libros)
-        {
-            if (l.getTitulo().equals(titulo))
-            {
-                System.out.println("libro encontrado!. " + l.toString() + " / por titulo: " + l.getTitulo());
-                return l;
-            }
-        }
+    // public static Libro buscarPorTitulo(String titulo)
+    // {
+    //     for(Libro l: _libros)
+    //     {
+    //         if (l.getTitulo().equals(titulo))
+    //         {
+    //             System.out.println("libro encontrado!. " + l.toString() + " / por titulo: " + l.getTitulo());
+    //             return l;
+    //         }
+    //     }
 
-        System.out.println("libro no existente.");
-        return null;
-    }
+    //     System.out.println("libro no existente.");
+    //     return null;
+    // }
 
-    public static Libro buscarPorAutor(String autor)
-    {
-        for(Libro l: _libros)
-        {
-            if (l.getAutor().equals(autor))
-            {
-                System.out.println("libro encontrado!. " + l.toString() + " / del autor: " + l.getAutor());
-                return l;
-            }
-        }
+    // public static Libro buscarPorAutor(String autor)
+    // {
+    //     for(Libro l: _libros)
+    //     {
+    //         if (l.getAutor().equals(autor))
+    //         {
+    //             System.out.println("libro encontrado!. " + l.toString() + " / del autor: " + l.getAutor());
+    //             return l;
+    //         }
+    //     }
 
-        System.out.println("libro no existente.");
-        return null;
-    }
+    //     System.out.println("libro no existente.");
+    //     return null;
+    // }
 
-    public static Libro buscarPorGenero(String genero)
-    {
-        for(Libro l: _libros)
-        {
-            if (l.getGenero().equals(genero))
-            {
-                System.out.println("libro encontrado!. " + l.toString() + " / del genero: " + l.getGenero());
-                return l;
-            }
-        }
+    // public static Libro buscarPorGenero(String genero)
+    // {
+    //     for(Libro l: _libros)
+    //     {
+    //         if (l.getGenero().equals(genero))
+    //         {
+    //             System.out.println("libro encontrado!. " + l.toString() + " / del genero: " + l.getGenero());
+    //             return l;
+    //         }
+    //     }
 
-        System.out.println("libro no existente.");
-        return null;
-    }
+    //     System.out.println("libro no existente.");
+    //     return null;
+    // }
 
     // private static boolean yaIngresado(Libro libro, List<Libro> libros) 
     // {

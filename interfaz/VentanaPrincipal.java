@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.util.List;
-
 import javax.swing.*;
 
 import controlador.VentanaAdminControlador;
@@ -14,8 +12,6 @@ import controlador.VentanaClienteControlador;
 import controlador.VentanaPrincipalControlador;
 
 import logica.Cliente;
-import logica.Libreria;
-import logica.Libro;
 
 // ventana donde vemos si el usuario es administrador, o cliente ???
 // las busquedas de libros son las mismas para ambos usuarios. se buscan por titulo, autor o género.
@@ -30,10 +26,6 @@ public class VentanaPrincipal extends JFrame
 
     private JButton botonIngresarAdmin;
     private JButton botonIngresarCliente;
-
-    // Se usaba para ver por consola todos los registrados.
-    private List<Cliente> usuarios;
-    private static List<Libro> libros = Libreria._libros;
 
     private static Cliente user;
 
@@ -103,7 +95,6 @@ public class VentanaPrincipal extends JFrame
             if (!nombre.isBlank() || !contraseña.isBlank()) 
             {
                 user = VentanaPrincipalControlador.generarUsuario(nombre, contraseña);
-                usuarios = VentanaPrincipalControlador.registrarClientes(user);
                 // limpiarCampos();
                 JOptionPane.showMessageDialog(this, "Persona registrada!");
                 
