@@ -3,9 +3,8 @@ package logica;
 public class Libro
 {
     private String _titulo;
-    private String _autor; // -> es irrelevante lo demás del autor, solo el nombre.
-    private String _genero; // -> se podría hacer con enum para los tipos de libro.
-                            // hago mejor 2 generos, drama y amor. (?)
+    private String _autor;
+    private String _genero;
 
     public Libro (String titulo, String autor, String genero)
     {
@@ -71,22 +70,5 @@ public class Libro
             return false;
         return true;
     }
-
-    // @Override
-    // public boolean equals(Object obj) 
-    // {
-    //     if (this == obj)
-    //         return true;
-    //     if (obj == null)
-    //         return false;
-    //     if (getClass() != obj.getClass())
-    //         return false;
-    //     Libro libro = (Libro) obj;
-
-    //     return ( this.getTitulo() == libro.getTitulo() 
-    //     && this.getAutor() == libro.getAutor() 
-    //     && this.getGenero() == libro.getGenero() );
-    // }
-
     
 }

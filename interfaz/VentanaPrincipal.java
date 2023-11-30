@@ -113,9 +113,4 @@ public class VentanaPrincipal extends JFrame
         return user;
     }
 
-    // private void limpiarCampos() 
-    // {
-	//     campoNombre.setText("");
-	// 	campoContraseña.setText("");
-	// }
 }
